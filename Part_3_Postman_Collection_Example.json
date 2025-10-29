@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "E-Commerce API Test Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Products",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token}}", "type": "text" }
+        ],
+        "url": { "raw": "{{base_url}}/products?category=electronics", "host": ["{{base_url}}"], "path": ["products"], "query": [{ "key": "category", "value": "electronics" }] }
+      },
+      "response": []
+    },
+    {
+      "name": "Add to Cart",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": { "mode": "raw", "raw": "{ \"product_id\": \"12345\", \"quantity\": 2 }" },
+        "url": { "raw": "{{base_url}}/cart", "host": ["{{base_url}}"], "path": ["cart"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Checkout",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": { "mode": "raw", "raw": "{ \"cart_id\": \"abc123\", \"payment_method\": \"card\" }" },
+        "url": { "raw": "{{base_url}}/checkout", "host": ["{{base_url}}"], "path": ["checkout"] }
+      },
+      "response": []
+    }
+  ]
+}
